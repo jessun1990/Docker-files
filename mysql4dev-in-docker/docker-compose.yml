@@ -1,16 +1,14 @@
 version: "3"
-volumes:
-  mysql_data:
 services:
   db:
-    image: mysql/mysql-server
+    image: mysql
     container_name: mysql4dev
     volumes:
       - "./mysqldb:/var/lib/mysql"
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: 123456
     expose:
-      - "3306"
+      - "3306"  
     ports:
-      - "127.0.0.1:3306:3306"
+      - "3306:3306"

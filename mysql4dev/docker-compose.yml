@@ -1,4 +1,4 @@
-version: "2"
+version: "3"
 services:
   db:
     image: mysql
@@ -7,8 +7,6 @@ services:
       - "./mysqldb:/var/lib/mysql"
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: 123456
-    expose:
-      - "3306"  
+      MYSQL_ROOT_PASSWORD: root
     ports:
       - "3306:3306"

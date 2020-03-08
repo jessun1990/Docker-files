@@ -1,17 +1,25 @@
 version: "3"
 services:
     mysql_master:
-        image: mysql:5.7.26
+        build:
+          context: ./
+          dockerfile: master/Dockerfile
         volumes:
             -  "./mysql_master:/var/lib/mysql"
         environment:
             MYSQL_ROOT_PASSWORD: root
             MYSQL_USER: devuser
             MYSQL_PASSWORD: devuser
+        links:
+          - mysql_slave
         ports:
-            -  "3306:3306"
+            -  "33060:3306"
+        restart: always
+        hostname: mysql_master
     mysql_slave:
-        image: mysql:5.7.26
+        build:
+          context: ./
+          dockerfile: slave/Dockerfile
         volumes:
             -  "./mysql_slave:/var/lib/mysql"
         environment:
@@ -19,4 +27,6 @@ services:
             MYSQL_USER: devuser
             MYSQL_PASSWORD: devuser
         ports:
-            -  "3307:3306"
+            -  "33061:3306"
+        restart: always
+        hostname: mysql_slave

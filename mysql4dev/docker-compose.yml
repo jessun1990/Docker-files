@@ -8,8 +8,6 @@ services:
             -  "./mysql_master:/var/lib/mysql"
         environment:
             MYSQL_ROOT_PASSWORD: root
-            MYSQL_USER: devuser
-            MYSQL_PASSWORD: devuser
         links:
           - mysql_slave
         ports:
@@ -24,8 +22,6 @@ services:
             -  "./mysql_slave:/var/lib/mysql"
         environment:
             MYSQL_ROOT_PASSWORD: root
-            MYSQL_USER: devuser
-            MYSQL_PASSWORD: devuser
         ports:
             -  "33061:3306"
         restart: always

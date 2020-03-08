@@ -1,2 +1,4 @@
 mongodb
 mysqldb
+mysql_master
+mysql_slave

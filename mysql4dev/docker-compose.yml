@@ -1,14 +1,22 @@
 version: "3"
 services:
-    db:
+    mysql_master:
         image: mysql:5.7.26
-        container_name: mysql4dev
         volumes:
-            -  "./mysqldb:/var/lib/mysql"
-        restart: always
+            -  "./mysql_master:/var/lib/mysql"
         environment:
             MYSQL_ROOT_PASSWORD: root
             MYSQL_USER: devuser
             MYSQL_PASSWORD: devuser
         ports:
             -  "3306:3306"
+    mysql_slave:
+        image: mysql:5.7.26
+        volumes:
+            -  "./mysql_slave:/var/lib/mysql"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_USER: devuser
+            MYSQL_PASSWORD: devuser
+        ports:
+            -  "3307:3306"
